@@ -7,4 +7,4 @@
   <h1>Website NobleBot Online 🔥</h1>
   <p>Website berhasil dibuat!</p>
 </body>
-</html>
+</html
