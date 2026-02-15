@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noble Bot - Advanced Project</title>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --card: rgba(255,255,255,0.05);
+  --text: white;
+  --primary: #3b82f6;
+}
+
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.light-mode {
+  --bg: #f4f4f4;
+  --card: #ffffff;
+  --text: #111;
+}
+
+nav {
+  background:#0b1120;
+  padding:15px;
+  text-align:center;
+  position:sticky;
+  top:0;
+}
+
+nav a {
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+button {
+  padding:8px 15px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+header {
+  text-align:center;
+  padding:60px 20px;
+}
+
+header img {
+  width:200px;
+  border-radius:20px;
+  box-shadow:0 0 20px var(--primary);
+}
+
+.section {
+  padding:50px 20px;
+  text-align:center;
+}
+
+.card {
+  background:var(--card);
+  padding:20px;
+  margin:15px auto;
+  border-radius:12px;
+  max-width:400px;
+}
+
+input {
+  padding:8px;
+  margin:5px;
+  width:70%;
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  background:#0b1120;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#tools">Tools</a>
+<a href="#contact">Kontak</a>
+<button onclick="toggleMode()">Mode</button>
+</nav>
+
+<header id="home">
+
+<!-- GANTI FOTO DI SINI -->
+<img src="noblebot.jpg" alt="">
+
+<h1>🤖 Noble Bot</h1>
+<p>Bot WhatsApp Multifungsi & Modern</p>
+
+<div id="clock"></div>
+
+</header>
+
+<div class="section" id="tools">
+<h2>🛠 Tools Interaktif</h2>
+
+<!-- Kalkulator -->
+<div class="card">
+<h3>Kalkulator</h3>
+<input type="number" id="num1" placeholder="Angka 1">
+<input type="number" id="num2" placeholder="Angka 2"><br>
+<button onclick="hitung()">Hitung</button>
+<p id="hasil"></p>
+</div>
+
+<!-- To Do List -->
+<div class="card">
+<h3>To Do List</h3>
+<input type="text" id="task" placeholder="Tulis tugas...">
+<button onclick="addTask()">Tambah</button>
+<ul id="list"></ul>
+</div>
+
+</div>
+
+<div class="section" id="contact">
+<h2>📩 Kontak</h2>
+
+<div class="card">
+<input type="text" id="nama" placeholder="Nama"><br>
+<input type="email" id="email" placeholder="Email"><br>
+<button onclick="kirim()">Kirim</button>
+<p id="notif"></p>
+</div>
+
+</div>
+
+<footer>
+© 2026 Noble Bot Project
+</footer>
+
+<script>
+// Dark Mode
+function toggleMode(){
+  document.body.classList.toggle("light-mode");
+}
+
+// Jam Digital
+function updateClock(){
+  const now = new Date();
+  document.getElementById("clock").innerHTML =
+  "Jam: " + now.toLocaleTimeString();
+}
+setInterval(updateClock,1000);
+
+// Kalkulator
+function hitung(){
+  let a = parseFloat(document.getElementById("num1").value);
+  let b = parseFloat(document.getElementById("num2").value);
+  document.getElementById("hasil").innerHTML = "Hasil: " + (a + b);
+}
+
+// To Do List
+function addTask(){
+  let task = document.getElementById("task").value;
+  let li = document.createElement("li");
+  li.textContent = task;
+  document.getElementById("list").appendChild(li);
+  document.getElementById("task").value="";
+}
+
+// Form Kontak
+function kirim(){
+  let nama = document.getElementById("nama").value;
+  if(nama === ""){
+    document.getElementById("notif").innerHTML="Nama wajib diisi!";
+  } else {
+    document.getElementById("notif").innerHTML="Pesan terkirim!";
+  }
+}
+</script>
+
+</body>
+</html>
